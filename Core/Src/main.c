@@ -118,9 +118,9 @@ int main(void)
   while (1)
   {
     //角速度计算
-    //angle_setspeed_ = angle_speed_cacl(set_round);
+    angle_setspeed_ = angle_speed_cacl(set_round);
     // PID 电流力矩计算
-    torque = pid_calc(&pid_motor, (float)moto_chassis[i].speed_rpm, setspeed);
+    torque = pid_calc(&pid_motor, (float)moto_chassis[i].speed_rpm, angle_setspeed_);
     // CAN发送
     can_cmd_send(torque);
     //采样时间
