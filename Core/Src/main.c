@@ -108,8 +108,8 @@ int main(void)
   can_filter_init();
 
   // PID参数初始化
-  pid_init(&pid_angle, 1500,500, 5, 0,5.0f, 0.0f, 0.0f);
-  pid_init(&pid_motor, 1500, 1000, 0, 0,5.0f, 0.8f, 0.0f);
+  pid_init(&pid_angle, 1500,0, 5, 0,5.0f, 0.0f, 0.0f);
+  pid_init(&pid_motor, 5000, 3000, 0, 0,5.0f, 0.8f, 0.0f);
 
   /* USER CODE END 2 */
 
