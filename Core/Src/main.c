@@ -47,10 +47,10 @@
 /* USER CODE BEGIN PV */
 int torque;
 float setspeed = 1000;
-float kp = 1.5;
-float ki = 0.1;
-float kd = 0.3;
-float set_round = 0.5; //设置圈数
+float kp = 5;
+float ki = 0.8;
+float kd = 0;
+float set_round = 3; //设置圈数
 float actual_round;
 float angle_setspeed_ ;
 /* USER CODE END PV */
@@ -108,8 +108,8 @@ int main(void)
   can_filter_init();
 
   // PID参数初始化
-  pid_init(&pid_angle, 1500,500, 25, 0,1.0f, 0.0f, 0.5f);
-  pid_init(&pid_motor, 1500, 1000, 75, 0,1.0f, 0.1f, 0.3f);
+  pid_init(&pid_angle, 1500,500, 5, 0,5.0f, 0.0f, 0.0f);
+  pid_init(&pid_motor, 1500, 1000, 0, 0,5.0f, 0.8f, 0.0f);
 
   /* USER CODE END 2 */
 
@@ -118,18 +118,18 @@ int main(void)
   while (1)
   {
     //角速度计算
-    angle_setspeed_ = angle_speed_cacl(set_round);
+    //angle_setspeed_ = angle_speed_cacl(set_round);
     // PID 电流力矩计算
     torque = pid_calc(&pid_motor, (float)moto_chassis[i].speed_rpm, setspeed);
     // CAN发送
     can_cmd_send(torque);
     //采样时间
-    HAL_Delay(1000);
+    HAL_Delay(10);
 
     //实际位置
     actual_round=(float)moto_chassis[i].total_angle / 8192.0f * 187.0f  / 3591.0f;//1.0f/36.0f
     // PID参数重设
-    //pid_reset(&pid_motor, kp, ki, kd);
+    pid_reset(&pid_motor, kp, ki, kd);
     //  HAL_CAN_Start(&hcan);
     // HAL_CAN_ActivateNotification(&hcan, CAN_IT_RX_FIFO0_MSG_PENDING);
     //  can_cmd_send(torque);

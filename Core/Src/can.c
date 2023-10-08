@@ -205,8 +205,8 @@ void HAL_CAN_RxFifo0MsgPendingCallback(CAN_HandleTypeDef *hcan)
         get_moto_measure(&moto_chassis[i], can_receive_data);
       }
       break;
-      // default:
-      //   break;
+       default:
+         break;
     }
   }
 }
