@@ -120,11 +120,11 @@ int main(void)
     //角速度计算
     angle_setspeed_ = angle_speed_cacl(set_round);
     // PID 电流力矩计算
-    torque = pid_calc(&pid_motor, (float)moto_chassis[i].speed_rpm, angle_setspeed_);
+    torque = pid_calc(&pid_motor, (float)moto_chassis[i].speed_rpm, setspeed);
     // CAN发送
     can_cmd_send(torque);
     //采样时间
-    HAL_Delay(100);
+    HAL_Delay(1000);
 
     //实际位置
     actual_round=(float)moto_chassis[i].total_angle / 8192.0f * 187.0f  / 3591.0f;//1.0f/36.0f
