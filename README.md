@@ -1,31 +1,10 @@
-# mosasaurus-embedded-entrant/RM_Motor_Position_Loop_Submit
+# 不要Push到"main"分支!
+
+## 上手指南
+
+URL克隆地址: https://git.jetbrains.space/zllcrm/mosasaurus-embedded-entrant/RM_Motor_Position_Loop_Submit.git
 
 
+## 要求
 
-## Getting Started
-
-Download links:
-
-SSH clone URL: ssh://git@git.jetbrains.space/zllcrm/mosasaurus-embedded-entrant/RM_Motor_Position_Loop_Submit.git
-
-HTTPS clone URL: https://git.jetbrains.space/zllcrm/mosasaurus-embedded-entrant/RM_Motor_Position_Loop_Submit.git
-
-
-
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes.
-
-## Prerequisites
-
-What things you need to install the software and how to install them.
-
-```
-Examples
-```
-
-## Deployment
-
-Add additional notes about how to deploy this on a production system.
-
-## Resources
-
-Add links to external resources for this project, such as CI server, bug tracker, etc.
+请把代码文件夹上传到以自己英文名命名的分支中，如尹隽骞的代码上传到"Junqian_Yin"中
