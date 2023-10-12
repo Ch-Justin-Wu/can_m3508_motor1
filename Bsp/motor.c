@@ -1,7 +1,7 @@
 #include "can.h"
 #include "motor.h"
 #include "pid.h"
-moto_measure_t moto_chassis[1] = {0}; // 1 chassis moto
+moto_measure_t moto_chassis[2] = {0}; // 1 chassis moto
 moto_measure_t moto_info;
 
 /**
@@ -42,7 +42,7 @@ u8 set_moto_current(CAN_HandleTypeDef hcan, s16 SID, s16 iq1)
     can_tx_message.StdId = 0x200; // ID
     can_tx_message.IDE = CAN_ID_STD;
     can_tx_message.RTR = CAN_RTR_DATA;
-    can_tx_message.DLC = 0x02;
+    can_tx_message.DLC = 0x04;
 
     can_send_data[0] = iq1 >> 8;
     can_send_data[1] = iq1;
@@ -99,7 +99,7 @@ void get_moto_offset(moto_measure_t *ptr, CAN_HandleTypeDef *hcan)
 //     p->last_angle = p->angle;
 // }
 
-u8 i;
+u8 i=0;
 
 //设定圈数
 // float set_round=10;

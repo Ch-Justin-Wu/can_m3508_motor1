@@ -162,6 +162,8 @@ void can_cmd_send(int motor1) //·¢ËÍº¯Êý
 
   can_send_data[0] = motor1 >> 8;
   can_send_data[1] = motor1;
+  can_send_data[2] = motor1 >> 8;
+  can_send_data[3] = motor1;
 
   HAL_CAN_AddTxMessage(&hcan, &can_tx_message, can_send_data, &send_mail_box);
 }
@@ -193,7 +195,7 @@ void HAL_CAN_RxFifo0MsgPendingCallback(CAN_HandleTypeDef *hcan)
     switch (can_rx_message.StdId)
     {
     case 0x201:
-      // case 0x202:
+       case 0x202:
       // case 0x203:
       // case 0x204:
       if (moto_chassis[i].msg_cnt++ <= 50)

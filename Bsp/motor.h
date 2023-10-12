@@ -27,7 +27,7 @@ typedef struct{
 	u32			msg_cnt;
 }moto_measure_t;
 
-#define motor_num 1		//电机数量
+#define motor_num 2		//电机数量
 
 extern moto_measure_t  moto_chassis[];
 extern moto_measure_t moto_info;

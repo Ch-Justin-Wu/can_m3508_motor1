@@ -79,7 +79,7 @@ int main(void)
   // float set_angle;
   //  u8 key;
   //  s8 key_cnt;
-  u8 i;
+  u8 i=0;
 
   /* USER CODE END 1 */
 
