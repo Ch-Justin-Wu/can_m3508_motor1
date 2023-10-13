@@ -1,7 +1,8 @@
 #include "can.h"
 #include "motor.h"
 #include "pid.h"
-moto_measure_t moto_chassis[2] = {0}; // 1 chassis moto
+
+moto_measure_t moto_chassis[2] = {0}; // 2 chassis moto
 moto_measure_t moto_info;
 
 /**
@@ -99,6 +100,7 @@ void get_moto_offset(moto_measure_t *ptr, CAN_HandleTypeDef *hcan)
 //     p->last_angle = p->angle;
 // }
 
+//此处只有一个电机,若多个电机不可这样使用
 u8 i=0;
 
 //设定圈数
