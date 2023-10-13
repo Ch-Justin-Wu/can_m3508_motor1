@@ -50,7 +50,7 @@ float setspeed = 1000;
 float kp = 5;
 float ki = 0.8;
 float kd = 0;
-float set_round = 3; //ÉèÖÃÈ¦Êı
+float set_round = 3; //è®¾ç½®åœˆæ•°
 float actual_round;
 float angle_setspeed_ ;
 /* USER CODE END PV */
@@ -104,10 +104,10 @@ int main(void)
   MX_CAN_Init();
   /* USER CODE BEGIN 2 */
 
-  // CAN¹ıÂËÆ÷³õÊ¼»¯
+  // CANè¿‡æ»¤å™¨åˆå§‹åŒ–
   can_filter_init();
 
-  // PID²ÎÊı³õÊ¼»¯
+  // PIDå‚æ•°åˆå§‹åŒ–
   pid_init(&pid_angle, 1500,0, 5, 0,5.0f, 0.0f, 0.0f);
   pid_init(&pid_motor, 5000, 3000, 0, 0,5.0f, 0.8f, 0.0f);
 
@@ -117,18 +117,18 @@ int main(void)
   /* USER CODE BEGIN WHILE */
   while (1)
   {
-    //½ÇËÙ¶È¼ÆËã
+    //è§’é€Ÿåº¦è®¡ç®—
     angle_setspeed_ = angle_speed_cacl(set_round);
-    // PID µçÁ÷Á¦¾Ø¼ÆËã
+    // PID ç”µæµåŠ›çŸ©è®¡ç®—
     torque = pid_calc(&pid_motor, (float)moto_chassis[i].speed_rpm, angle_setspeed_);
-    // CAN·¢ËÍ
+    // CANå‘é€
     can_cmd_send(torque);
-    //²ÉÑùÊ±¼ä
+    //é‡‡æ ·æ—¶é—´
     HAL_Delay(10);
 
-    //Êµ¼ÊÎ»ÖÃ
+    //å®é™…ä½ç½®
     actual_round=(float)moto_chassis[i].total_angle / 8192.0f * 187.0f  / 3591.0f;//1.0f/36.0f
-    // PID²ÎÊıÖØÉè
+    // PIDå‚æ•°é‡è®¾
     pid_reset(&pid_motor, kp, ki, kd);
     //  HAL_CAN_Start(&hcan);
     // HAL_CAN_ActivateNotification(&hcan, CAN_IT_RX_FIFO0_MSG_PENDING);

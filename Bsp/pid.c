@@ -1,9 +1,9 @@
 #include "pid.h"
 #include <math.h>
 #define ABS(x) ((x > 0) ? (x) : (-x))
-// µç»úËÙ¶È PID ½á¹¹Ìå¶¨Òå
-pid_t pid_motor = {0};//ËÙ¶È»·
-pid_t pid_angle = {0};//½Ç¶È»·
+// ç”µæœºé€Ÿåº¦ PID ç»“æ„ä½“å®šä¹‰
+pid_t pid_motor = {0};//é€Ÿåº¦ç¯
+pid_t pid_angle = {0};//è§’åº¦ç¯
 
 void abs_limit(float *a, float ABS_MAX)
 {
@@ -14,11 +14,11 @@ void abs_limit(float *a, float ABS_MAX)
 }
 
 /**
- * @brief     PID ³õÊ¼»¯º¯Êı
- * @param[in] pid: PID ½á¹¹Ìå
- * @param[in] max_out: ×î´óÊä³ö
- * @param[in] intergral_limit: »ı·ÖÏŞ·ù
- * @param[in] kp/ki/kd: ¾ßÌå PID ²ÎÊı
+ * @brief     PID åˆå§‹åŒ–å‡½æ•°
+ * @param[in] pid: PID ç»“æ„ä½“
+ * @param[in] max_out: æœ€å¤§è¾“å‡º
+ * @param[in] intergral_limit: ç§¯åˆ†é™å¹…
+ * @param[in] kp/ki/kd: å…·ä½“ PID å‚æ•°
  */
 void pid_init(pid_t *pid, uint32_t max_out, uint32_t intergral_limit, float Deadband,float Max_err, float kp, float ki, float kd)
 {
@@ -33,11 +33,11 @@ void pid_init(pid_t *pid, uint32_t max_out, uint32_t intergral_limit, float Dead
 }
 
 /**
- * @brief     PID ¼ÆËãº¯Êı£¬Ê¹ÓÃÎ»ÖÃÊ½ PID ¼ÆËã
- * @param[in] pid: PID ½á¹¹Ìå
- * @param[in] get: ·´À¡Êı¾İ
- * @param[in] set: Ä¿±êÊı¾İ
- * @retval    PID ¼ÆËãÊä³ö
+ * @brief     PID è®¡ç®—å‡½æ•°ï¼Œä½¿ç”¨ä½ç½®å¼ PID è®¡ç®—
+ * @param[in] pid: PID ç»“æ„ä½“
+ * @param[in] get: åé¦ˆæ•°æ®
+ * @param[in] set: ç›®æ ‡æ•°æ®
+ * @retval    PID è®¡ç®—è¾“å‡º
  */
 float pid_calc(pid_t *pid, float get, float set)
 {
@@ -47,7 +47,7 @@ float pid_calc(pid_t *pid, float get, float set)
 
     if (pid->max_err != 0 && ABS(pid->err[NOW]) > pid->max_err)
         return 0;
-     if (pid->deadband != 0 && ABS(pid->err[NOW]) < pid->deadband)//ËÀÇø¿ØÖÆ
+     if (pid->deadband != 0 && ABS(pid->err[NOW]) < pid->deadband)//æ­»åŒºæ§åˆ¶
          return 0;
 
     pid->pout = pid->p * pid->err[NOW];
@@ -64,9 +64,9 @@ float pid_calc(pid_t *pid, float get, float set)
 }
 
 /**
- * @brief     PID ²ÎÊı¸´Î»º¯Êı
- * @param[in] pid: PID ½á¹¹Ìå
- * @param[in] kp/ki/kd: ¾ßÌå PID ²ÎÊı
+ * @brief     PID å‚æ•°å¤ä½å‡½æ•°
+ * @param[in] pid: PID ç»“æ„ä½“
+ * @param[in] kp/ki/kd: å…·ä½“ PID å‚æ•°
  */
 void pid_reset(pid_t *pid, float kp, float ki, float kd)
 {
