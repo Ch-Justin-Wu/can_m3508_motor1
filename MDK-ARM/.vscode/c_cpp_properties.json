@@ -3,17 +3,17 @@
         {
             "name": "can_m3508",
             "includePath": [
-                "e:\\Justin Wu\\cubeMxProject\\can_m3508_motor1\\Core\\Inc",
-                "e:\\Justin Wu\\cubeMxProject\\can_m3508_motor1\\Drivers\\STM32F1xx_HAL_Driver\\Inc",
-                "e:\\Justin Wu\\cubeMxProject\\can_m3508_motor1\\Drivers\\STM32F1xx_HAL_Driver\\Inc\\Legacy",
-                "e:\\Justin Wu\\cubeMxProject\\can_m3508_motor1\\Drivers\\CMSIS\\Device\\ST\\STM32F1xx\\Include",
-                "e:\\Justin Wu\\cubeMxProject\\can_m3508_motor1\\Drivers\\CMSIS\\Include",
-                "e:\\Justin Wu\\cubeMxProject\\can_m3508_motor1\\Bsp",
+                "e:\\Justin Wu\\RM_Motor_Position_Loop_Submit\\Core\\Inc",
+                "e:\\Justin Wu\\RM_Motor_Position_Loop_Submit\\Drivers\\STM32F1xx_HAL_Driver\\Inc",
+                "e:\\Justin Wu\\RM_Motor_Position_Loop_Submit\\Drivers\\STM32F1xx_HAL_Driver\\Inc\\Legacy",
+                "e:\\Justin Wu\\RM_Motor_Position_Loop_Submit\\Drivers\\CMSIS\\Device\\ST\\STM32F1xx\\Include",
+                "e:\\Justin Wu\\RM_Motor_Position_Loop_Submit\\Drivers\\CMSIS\\Include",
+                "e:\\Justin Wu\\RM_Motor_Position_Loop_Submit\\Bsp",
                 "D:\\Keil_v5\\ARM\\ARMCC\\include",
                 "D:\\Keil_v5\\ARM\\ARMCC\\include\\rw",
-                "e:\\Justin Wu\\cubeMxProject\\can_m3508_motor1\\MDK-ARM",
-                "e:\\Justin Wu\\cubeMxProject\\can_m3508_motor1\\Core\\Src",
-                "e:\\Justin Wu\\cubeMxProject\\can_m3508_motor1\\Drivers\\STM32F1xx_HAL_Driver\\Src"
+                "e:\\Justin Wu\\RM_Motor_Position_Loop_Submit\\MDK-ARM",
+                "e:\\Justin Wu\\RM_Motor_Position_Loop_Submit\\Core\\Src",
+                "e:\\Justin Wu\\RM_Motor_Position_Loop_Submit\\Drivers\\STM32F1xx_HAL_Driver\\Src"
             ],
             "defines": [
                 "USE_HAL_DRIVER",

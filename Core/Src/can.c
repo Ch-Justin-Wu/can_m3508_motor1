@@ -28,8 +28,8 @@
 CAN_TxHeaderTypeDef can_tx_message;
 CAN_RxHeaderTypeDef can_rx_message;
 
-uint8_t can_send_data[8];    //·¢ËÍµÄÊı¾İÖ¡
-uint8_t can_receive_data[8]; //½ÓÊÜµÄÊı¾İÖ¡
+uint8_t can_send_data[8];    //å‘é€çš„æ•°æ®å¸§
+uint8_t can_receive_data[8]; //æ¥å—çš„æ•°æ®å¸§
 
 /* USER CODE END 0 */
 
@@ -131,7 +131,7 @@ void HAL_CAN_MspDeInit(CAN_HandleTypeDef *canHandle)
 /* USER CODE BEGIN 1 */
 
 /**
- * @brief can¹ıÂËÆ÷³õÊ¼»¯
+ * @brief canè¿‡æ»¤å™¨åˆå§‹åŒ–
  *
  */
 void can_filter_init(void)
@@ -152,7 +152,7 @@ void can_filter_init(void)
   HAL_CAN_ActivateNotification(&hcan, CAN_IT_RX_FIFO0_MSG_PENDING);
 }
 
-void can_cmd_send(int motor1) //·¢ËÍº¯Êı
+void can_cmd_send(int motor1) //å‘é€å‡½æ•°
 {
   uint32_t send_mail_box;
   can_tx_message.StdId = 0x200; // ID
@@ -168,7 +168,7 @@ void can_cmd_send(int motor1) //·¢ËÍº¯Êı
   HAL_CAN_AddTxMessage(&hcan, &can_tx_message, can_send_data, &send_mail_box);
 }
 
-// void can_cmd_receive() //½ÓÊÕº¯Êı
+// void can_cmd_receive() //æ¥æ”¶å‡½æ•°
 // {
 //   uint32_t receive_mail_box;
 //   can_rx_message.StdId = 0x200; // ID
@@ -178,7 +178,7 @@ void can_cmd_send(int motor1) //·¢ËÍº¯Êı
 // }
 // int flag=0;
 /**
- * @brief CAN½ÓÊÕÖĞ¶Ï»Øµ÷º¯Êı
+ * @brief CANæ¥æ”¶ä¸­æ–­å›è°ƒå‡½æ•°
  *
  * @param hcan
  */
@@ -187,7 +187,7 @@ void HAL_CAN_RxFifo0MsgPendingCallback(CAN_HandleTypeDef *hcan)
   if (hcan->Instance == CAN1)
   {
     // flag++;
-    HAL_CAN_GetRxMessage(hcan, CAN_FILTER_FIFO0, &can_rx_message, can_receive_data); //»ñÈ¡Êı¾İ
+    HAL_CAN_GetRxMessage(hcan, CAN_FILTER_FIFO0, &can_rx_message, can_receive_data); //è·å–æ•°æ®
     static uint8_t i = 0;
     i = can_rx_message.StdId - 0x201;
     // get_moto_measure(&moto_chassis[i], can_receive_data);
